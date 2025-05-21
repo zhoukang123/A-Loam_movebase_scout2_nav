@@ -56,3 +56,17 @@ CV_LOAD_IMAGE_GRAYCALE 改为 cv::IMREAD_GRAYSCALE       //91行和93行
 /camera_init 改为 camera_init
 
 ```
+![image](https://github.com/user-attachments/assets/f4731bcb-3e86-4160-b58e-2fb0a7f2e5ef)
+
+```
+//将scanRegistration.cpp中的sub接口改一下
+ 
+ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2>("/velodyne_points", 100, laserCloudHandler);
+ 
+//改为
+ 
+ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2>("/points_raw", 100, laserCloudHandler);
+ 
+//改完后保存
+```
+
