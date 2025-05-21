@@ -70,8 +70,6 @@ ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2>("/points_
 //改完后保存
 ```
 
-![image](https://github.com/user-attachments/assets/ee596c55-dc3f-4469-8225-aed687291bae)
-
 ![image](https://github.com/user-attachments/assets/f65b4a8f-e2ba-4a7d-930d-1a73fd9fb24d)
 
 
