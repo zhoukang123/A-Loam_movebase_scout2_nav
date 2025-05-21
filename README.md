@@ -8,5 +8,51 @@ A-loam纯Robosense SLAM建图，movebase导航，scout2松灵小车导航
     cd ../
     catkin_make
 ```
-
+## Step2
+```
+sudo gedit /etc/apt/sources.list
+deb http://cz.archive.ubuntu.com/ubuntu trusty main universe
+```
  
+```
+sudo apt-get install liblapack-dev libsuitesparse-dev libcxsparse3.1.2 libgflags-dev
+sudo apt-get install libgoogle-glog-dev libgtest-dev
+```
+## Step3
+```
+wget ceres-solver.org/ceres-solver-1.14.0.tar.gz
+tar -zxvf ceres-solver-1.14.0.tar.gz
+```
+## Step4
+```
+cd ceres-solver-1.14.0 
+mkdir build
+cd build
+cmake .. 
+make -j4
+sudo make install
+```
+# 修改源码：
+```
+//改A-LOAM下的CMakeLists.txt
+ 
+c++11 改为 c++14
+ 
+ 
+//改A-LOAM/src/kittiHelper.cpp
+ 
+CV_LOAD_IMAGE_GRAYCALE 改为 cv::IMREAD_GRAYSCALE       //91行和93行
+ 
+ 
+//改A-LOAM/src/scanRegistration.cpp里的
+ 
+#include <opencv/cv.h> 改为 #include <opencv2/imgproc.hpp>
+ 
+ 
+//改A-LOAM/src/三个cpp文件laserMapping.cpp和scanRegistration.cpp和laserOdometry.cpp
+ 
+//使用Ctrl+H快捷键快速替换
+ 
+/camera_init 改为 camera_init
+
+```
